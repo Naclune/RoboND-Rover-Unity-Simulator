@@ -370,10 +370,10 @@ public abstract class IRobotController : MonoBehaviour
 		Texture2D texture2D = new Texture2D (targetTexture.width, targetTexture.height, TextureFormat.RGB24, false);
 		texture2D.ReadPixels (new Rect (0, 0, targetTexture.width, targetTexture.height), 0, 0);
 		texture2D.Apply ();
-		byte[] image = texture2D.EncodeToJPG ();
+		byte[] image = texture2D.EncodeToPNG ();
 		UnityEngine.Object.DestroyImmediate (texture2D);
 		string directory = Path.Combine(m_saveLocation, DirFrames);
-		string path = Path.Combine(directory, prepend + "_" + timestamp + ".jpg");
+		string path = Path.Combine(directory, prepend + "_" + timestamp + ".png");
 		File.WriteAllBytes (path, image);
 		image = null;
 		return path;
